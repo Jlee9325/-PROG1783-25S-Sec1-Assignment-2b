@@ -165,4 +165,9 @@ def print_receipt(customer, order, costs, student, tip_percent):
 
     if customer["delivery"] == 'y':
         if costs["delivery"] == 0:
-            print()
+            print(f"{'Delivery (Waived)':>50}{f'${costs['delivery']:.2f}':>12}")
+        else:
+            print(f"{'Delivery':>50}{f'${costs['delivery']:.2f}':>12}")
+        print(f"{f'Tips ({int(tip_percent*100)}%)':>50}{f'${costs['tip']:.2f}':>12}")
+
+    print 
