@@ -110,4 +110,24 @@ def is_student():
     return answer == 'y'
 
 #this function is for tip percentage
-def
+def get_tip_percentage():
+    print("1) 10% 2) 15% 3) 20%")
+    try:
+        choice = int(input("Choose your tip amount (1,2 or 3): "))
+        return TIP_OPTIONS.get(choice,0.15) #this is the default percentage if option is invalid
+    except ValueError:
+        return 0.15
+    
+#this function is to calculate the totals of the meal
+def calculate_total (order, student, delivery, tip_percent):
+    item_total= order["price"] * order["quantity"]
+    discount = item_total * STUDENT_DISCOUNT_RATE if student else 0
+    subtotal = item_total - discount
+    delivery_charge = 0
+    if delivery_charge and subtotal < FREE_DELIVERY:
+        delivery_charge = DELIVERY_FEE
+    tip = subtotal *tip_percent if delivery else 0
+    tax = subtotal *HST_RATE
+    total = subtotal + delivery_charge + tip + tax
+
+    
