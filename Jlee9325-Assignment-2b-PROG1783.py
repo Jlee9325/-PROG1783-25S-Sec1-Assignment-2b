@@ -65,12 +65,12 @@ def get_customer_info():
         info["city"] = get_non_empty_input("Enter your city: ")
         info["province"] = get_non_empty_input("Enter your Province: ")
         info["postal_code"] = get_postal_code()
-        info["instructions"] = input("Any specidic delivery instructions? ")
+        info["instructions"] = input("Any specific delivery instructions? ")
     return info
 
 #This function is to show the menu
 def show_menu():
-    print("\nmenu:")
+    print("\nMenu:")
     for key, item in menu.items():
         print(f"{key}) {item['name']} - ${item['price']:.2f}")
     
@@ -145,7 +145,8 @@ def calculate_total (order, student, delivery, tip_percent):
 def print_receipt(customer, order, costs, student, tip_percent):
     print ("\n\n===ARNOLD'S AMAZING EATS===")
     print("           RECEIPT\n")
-    print(f"{customer['first_name']}{customer['last_name']}")
+
+    print(f"{customer['first_name']} {customer['last_name']}")
 
     if customer["delivery"] == 'y':
         full_address = f"{customer['street']}" + (f" Unit{customer['unit']}" if customer ['unit'] else"")
@@ -156,10 +157,10 @@ def print_receipt(customer, order, costs, student, tip_percent):
         print(f"Phone: {customer['phone']}\n")
 
     print(f"{'Order':<25}{'Item Amt':>10}{'Item Price':>15}{'Total':>12}")
-    print(f"{order['meal']:<25}{order['quantity']:>10}{f'${order['price']:.2f}':>15}{f'${costs['items_total']:.2f}':>12}")
+    print(f"{order['meal']:<25}{order['quantity']:>10}{f'${order['price']:.2f}':>15}{f'${costs['item_total']:.2f}':>12}")
 
     if student:
-        print(f"{'15% Student saving':>50}{f'-${costs['subtotal']:.2f}':>12}")
+        print(f"{'15% Student saving':>50}{f'-${costs['discount']:.2f}':>12}")
 
     print(f"{'Sub Total':>50}{f'${costs['subtotal']:.2f}':>12}")
 
