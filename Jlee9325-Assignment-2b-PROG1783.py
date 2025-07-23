@@ -170,4 +170,22 @@ def print_receipt(customer, order, costs, student, tip_percent):
             print(f"{'Delivery':>50}{f'${costs['delivery']:.2f}':>12}")
         print(f"{f'Tips ({int(tip_percent*100)}%)':>50}{f'${costs['tip']:.2f}':>12}")
 
-    print 
+    print(f"{'Tax(13%)':>50}{f'${costs['tax']:.2f}':>12}")
+    print(f"{'':>50}{'--------':>12}")
+    print(f"{'TOTAL':>50}{f'${costs['total']:.2f}':>12}")
+    print("\nThank you for your order!")
+
+
+    #this is the main function that 
+def run_arnolds_amazing_eats():
+    show_welcome()
+    customer = get_customer_info()
+    order = take_order()
+    student = is_student()
+    tip_percent = get_tip_percentage() if customer["delivery"] == 'y' else 0
+    costs = calculate_total(order, student, customer["delivery"] == 'y', tip_percent)
+    print_receipt(customer, order, costs, student, tip_percent)
+
+run_arnolds_amazing_eats()
+
+    
