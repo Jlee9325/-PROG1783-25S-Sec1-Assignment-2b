@@ -104,4 +104,10 @@ def take_order():
 
 #this function is for if the customer is a student or not, this infomation will be for the students discount
 def is_student():
-    
+    answer = input("Are you a student? (y/n): ").lower()
+    while answer not in ['y', 'n']:
+        answer = input("Please enter 'y' or 'n': ").lower()
+    return answer == 'y'
+
+#this function is for tip percentage
+def
