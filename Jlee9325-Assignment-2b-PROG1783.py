@@ -56,4 +56,22 @@ def get_customer_info():
     info["last_name"] = get_non_empty_input("Enter your last name: ")
     info["phone_number"] = get_non_empty_input("Enter your phone number: ")
     info["delivery"] = input("Do you need delivery? (y/n): ").lower()
+    while info["delivery"] not in ['y', 'n']
+        info["delivery"] = input("Please enter 'y' or 'n': ").lower()
+
+    if info["delivery"] == 'y':
+        info["street"] = get_non_empty_input("Enter your street address: ")
+        info["unit"] = input("Enter your unit number (optional): ")
+        info["city"] = get_non_empty_input("Enter your city: ")
+        info["province"] = get_non_empty_input("Enter your Province: ")
+        info["postal_code"] = get_postal_code()
+        info["instructions"] = input("Any specidic delivery instructions? ")
+    return info
+
+#This function is to show the menu
+def show_menu():
+    print("\nmenu:")
+    for key, item in menu.items():
+        print(f"{key}) {item['name']} - ${item['price']:.2f}")
     
+#this function is to take orders
