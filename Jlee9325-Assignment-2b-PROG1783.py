@@ -130,4 +130,13 @@ def calculate_total (order, student, delivery, tip_percent):
     tax = subtotal *HST_RATE
     total = subtotal + delivery_charge + tip + tax
 
-    
+    return {
+        "item_total" : item_total,
+        "discount" : discount,
+        "subtotal" : subtotal,
+        "delivery" : delivery_charge,
+        "tip" : tip,
+        "tax" : tax,
+        "total" : total
+    }
+
