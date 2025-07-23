@@ -49,3 +49,11 @@ def get_postal_code():
         code = input("Postal code must be 7 characters, please try again") .strip()
     return code
 
+#this is the function for customer information
+def get_customer_info():
+    info = {}
+    info["first_name"] = get_non_empty_input("Enter your first name: ")
+    info["last_name"] = get_non_empty_input("Enter your last name: ")
+    info["phone_number"] = get_non_empty_input("Enter your phone number: ")
+    info["delivery"] = input("Do you need delivery? (y/n): ").lower()
+    
