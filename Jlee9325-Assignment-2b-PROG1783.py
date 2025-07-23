@@ -17,5 +17,16 @@ DELIVERY_FEE = 7.00
 FREE_DELIVERY = 25.00
 TIP_OPTIONS = {1: 1.00, 2: 2.00, 3: 5.00}
 
+#This is my Menu Dictionary adding 4 more items from 2
 
+menu = {
+    1: {"name": "Garlic Burger", "price": 12.69},
+    2: {"name": "Cheese Pizza", "price": 15.99},
+    3: {"name": "Snack Wrap", "price": 9.39},
+    4: {"name": "Nacho Fries", "price": }
+
+
+
+
+}
 
