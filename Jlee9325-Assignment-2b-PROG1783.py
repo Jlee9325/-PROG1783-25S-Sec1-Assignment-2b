@@ -140,3 +140,12 @@ def calculate_total (order, student, delivery, tip_percent):
         "total" : total
     }
 
+#this next function is for printing the receipt
+
+def print_receipt(customer, order, costs, student, tip_percent):
+    print ("\n\n===ARNOLD'S AMAZING EATS===")
+    print("           RECEIPT\n")
+    print(f"{customer['first_name']}{customer['last_name']}")
+
+    if customer["delivery"] == 'y':
+        full
