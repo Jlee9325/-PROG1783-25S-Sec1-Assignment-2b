@@ -15,7 +15,7 @@ STUDENT_DISCOUNT_RATE = 0.15
 HST_RATE = 0.13
 DELIVERY_FEE = 7.00
 FREE_DELIVERY = 25.00
-TIP_OPTIONS = {1: 1.00, 2: 2.00, 3: 5.00}
+TIP_OPTIONS = {1: 0.10, 2: 0.15, 3: 0.20}
 
 #This is my Menu Dictionary adding 4 more items from 2
 
@@ -123,7 +123,7 @@ def calculate_total (order, student, delivery, tip_percent):
     item_total= order["price"] * order["quantity"]
     discount = item_total * STUDENT_DISCOUNT_RATE if student else 0
     subtotal = item_total - discount
-    delivery_charge = 0
+    delivery_charge = DELIVERY_FEE if (delivery and subtotal < FREE_DELIVERY) else 0
     if delivery_charge and subtotal < FREE_DELIVERY:
         delivery_charge = DELIVERY_FEE
     tip = subtotal *tip_percent if delivery else 0
