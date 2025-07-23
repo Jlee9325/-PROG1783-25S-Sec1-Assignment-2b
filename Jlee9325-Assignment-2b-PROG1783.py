@@ -30,6 +30,7 @@ menu = {
 
 #adding my functions
 
+#this is my welcome function
 def show_welcome():
     print("Welcome to Arnold's Amazing Eats!")
     print("Place your meal for pick up or delivery.\n")
@@ -40,3 +41,11 @@ def get_non_empty_input(prompt):
     while value == "":
         value = input("This field cannot be empty. " + prompt).strip()
     return value
+
+#this is the postal code function
+def get_postal_code():
+    code = input("Enter your postal code (7 characters):") .strip()
+    while len(code) !=7:
+        code = input("Postal code must be 7 characters, please try again") .strip()
+    return code
+
