@@ -155,4 +155,14 @@ def print_receipt(customer, order, costs, student, tip_percent):
     else:
         print(f"Phone: {customer['phone']}\n")
 
-    
+    print(f"{'Order':<25}{'Item Amt':>10}{'Item Price':>15}{'Total':>12}")
+    print(f"{order['meal']:<25}{order['quantity']:>10}{f'${order['price']:.2f}':>15}{f'${costs['items_total']:.2f}':>12}")
+
+    if student:
+        print(f"{'15% Student saving':>50}{f'-${costs['subtotal']:.2f}':>12}")
+
+    print(f"{'Sub Total':>50}{f'${costs['subtotal']:.2f}':>12}")
+
+    if customer["delivery"] == 'y':
+        if costs["delivery"] == 0:
+            print()
