@@ -29,3 +29,14 @@ menu = {
 }
 
 #adding my functions
+
+def show_welcome():
+    print("Welcome to Arnold's Amazing Eats!")
+    print("Place your meal for pick up or delivery.\n")
+
+#this function triggers when nothing is inputed
+def get_non_empty_input(prompt):
+    value = input (prompt).strip()
+    while value == "":
+        value = input("This field cannot be empty. " + prompt).strip()
+    return value
