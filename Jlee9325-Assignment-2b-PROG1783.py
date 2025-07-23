@@ -148,4 +148,11 @@ def print_receipt(customer, order, costs, student, tip_percent):
     print(f"{customer['first_name']}{customer['last_name']}")
 
     if customer["delivery"] == 'y':
-        full
+        full_address = f"{customer['street']}" + (f" Unit{customer['unit']}" if customer ['unit'] else"")
+        print(full_address)
+        print(f"{customer['city']}{customer['province']}, {customer['postal_code']}")
+        print(f"{customer['instructions']}\n")
+    else:
+        print(f"Phone: {customer['phone']}\n")
+
+    
