@@ -56,7 +56,7 @@ def get_customer_info():
     info["last_name"] = get_non_empty_input("Enter your last name: ")
     info["phone_number"] = get_non_empty_input("Enter your phone number: ")
     info["delivery"] = input("Do you need delivery? (y/n): ").lower()
-    while info["delivery"] not in ['y', 'n']
+    while info["delivery"] not in ['y', 'n']:
         info["delivery"] = input("Please enter 'y' or 'n': ").lower()
 
     if info["delivery"] == 'y':
@@ -75,3 +75,33 @@ def show_menu():
         print(f"{key}) {item['name']} - ${item['price']:.2f}")
     
 #this function is to take orders
+def take_order():
+    order = {}
+    while True:
+        show_menu()
+        try:
+            choice = int(input("\nEnter the number of the meal you'd like to order (1-6): "))
+            if choice not in menu:
+                print("Invalid choice. Try Again.")
+                continue
+
+            #this is for the amount of meals you would want    
+            qty = int(input("\nHow many items of this item would you like? "))
+            if qty <= 0:
+                print("Quantity must be more than 0.")
+                continue
+
+            confirm = input(f"You Selected {qty} {menu[choice]['name']}(s)). Confirm? (y/n): ").lower()
+
+            if confirm == 'y':
+                order["meal"] = menu[choice]['name']
+                order["price"] = menu[choice]['price']
+                order["quantity"] = qty
+                break
+        except ValueError:
+            print("Please enter valid numbers.")
+    return order
+
+#this function is for if the customer is a student or not, this infomation will be for the students discount
+def is_student():
+    
