@@ -60,17 +60,17 @@ def get_customer_info():
     info = {}
     print("\n=== Customer Information ===")
     info["first_name"] = get_valid_input("Enter your first name: ", validate_not_empty)
-    info["last_name"] = get_valid_input("Enter your last name: ")
-    info["phone_number"] = get_valid_input("Enter your phone number: ")
+    info["last_name"] = get_valid_input("Enter your last name: ", validate_not_empty)
+    info["phone_number"] = get_valid_input("Enter your phone number: ", validate_not_empty)
     info["delivery"] = input("Do you need delivery? (y/n): ").lower()
     while info["delivery"] not in ['y', 'n']:
         info["delivery"] = input("Please enter 'y' or 'n': ").lower()
 
     if info["delivery"] == 'y':
-        info["street"] = get_valid_input("Enter your street address: ")
+        info["street"] = get_valid_input("Enter your street address: ", validate_not_empty)
         info["unit"] = input("Enter your unit number (optional): ")
-        info["city"] = get_valid_input("Enter your city: ")
-        info["province"] = get_valid_input("Enter your Province: ")
+        info["city"] = get_valid_input("Enter your city: ", validate_not_empty)
+        info["province"] = get_valid_input("Enter your Province: ", validate_not_empty)
         info["postal_code"] = get_postal_code()
         info["instructions"] = input("Any specific delivery instructions? ")
     return info
@@ -83,7 +83,7 @@ def show_menu():
     
 #this function is to take orders
 def take_order():
-    order = {}
+    order = []
     while True:
         show_menu()
         try:
@@ -101,10 +101,16 @@ def take_order():
             confirm = input(f"You Selected {qty} {menu[choice]['name']}(s)). Confirm? (y/n): ").lower()
 
             if confirm == 'y':
-                order["meal"] = menu[choice]['name']
-                order["price"] = menu[choice]['price']
-                order["quantity"] = qty
+                order.append({
+                    "meal" : menu[choice]['name'],
+                    "price" : menu[choice]['price'],
+                    "quantity" : qty
+                })
+
+            more = input("Would you like to order another item? (y/n): ").lower()
+            if more != 'y':
                 break
+            
         except ValueError:
             print("Please enter valid numbers.")
     return order
