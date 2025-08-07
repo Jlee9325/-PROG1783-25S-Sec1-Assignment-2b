@@ -25,20 +25,15 @@ class MenuItem:
         self.price = price
 
 class Menu:
-    
-
-
-
-#This is my Menu Dictionary Using classes
-
-menu = {
-    1: {"name": "Garlic Burger", "price": 12.69},
-    2: {"name": "Cheese Pizza", "price": 15.99},
-    3: {"name": "Snack Wrap", "price": 9.39},
-    4: {"name": "Nacho Fries", "price": 7.99},
-    5: {"name": "Poutine", "price": 9.79},
-    6: {"name": "The Dawg","price": 6.49},
-}
+    def __init__(self):
+        self.items = { 
+            1: {"name": "Garlic Burger", "price": 12.69},
+            2: {"name": "Cheese Pizza", "price": 15.99},
+            3: {"name": "Snack Wrap", "price": 9.39},
+            4: {"name": "Nacho Fries", "price": 7.99},
+            5: {"name": "Poutine", "price": 9.79},
+            6: {"name": "The Dawg","price": 6.49},
+                }
 
 #adding my functions
 
