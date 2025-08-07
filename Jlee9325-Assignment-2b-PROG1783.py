@@ -197,7 +197,14 @@ def print_receipt(customer, order, costs, student, tip_percent):
 
     try:
         #this is to make the filename using customer information
-        
+        timestamp = datetime.now().strftime("%Y%m%d_%H:%M:%S")
+        filename = f"{customer['first_name']}_{customer['last_name']}_receipt(timestamp).txt"
+
+        with open(filename, 'w') as file:
+            file.write('\n'.join(receipt_lines))
+        print(f"\n Receipt saved to: {filename}")
+    except Exception as e:
+        print(f"\nError Saving Receipt: {str(e)}")
 
 
 
