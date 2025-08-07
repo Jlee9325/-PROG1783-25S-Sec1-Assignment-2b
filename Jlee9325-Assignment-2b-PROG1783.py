@@ -192,10 +192,15 @@ def validate_menu_choice(choice):
     except ValueError:
         return False
     
-
-
-
-
+def validate_quantity(qty):
+    try:
+        return int(qty) > 0 
+    except ValueError:
+        return False
+    
+def validate_yn(response):
+    return response.lower() in ['y','n']
+ 
     #this is the main function that 
 def run_arnolds_amazing_eats():
     show_welcome()
