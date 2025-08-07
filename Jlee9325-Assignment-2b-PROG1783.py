@@ -7,7 +7,10 @@
 #  Expand on Arnolds's eats - collect customers orders
 #  allows delivery/pickup, applies discounts and tips, and prints the receipt
 
+#adding systems and date and time for the txt file print out
 
+import sys
+from datetime import datetime
 
 #these are my constants for the receipt this includes taxes, delivery, tips, etc
 
