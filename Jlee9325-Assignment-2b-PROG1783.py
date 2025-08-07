@@ -159,38 +159,45 @@ def print_receipt(customer, order, costs, student, tip_percent):
 
     receipt_lines = []
 
-    print ("\n\n===ARNOLD'S AMAZING EATS===")
-    print("           RECEIPT\n")
+    receipt_lines.append("\n\n===ARNOLD'S AMAZING EATS===")
+    receipt_lines.append("           RECEIPT\n")
 
-    print(f"{customer['first_name']} {customer['last_name']}")
+    receipt_lines.append(f"{customer['first_name']} {customer['last_name']}")
 
     if customer["delivery"] == 'y':
         full_address = f"{customer['street']}" + (f" Unit{customer['unit']}" if customer ['unit'] else"")
         receipt_lines.append(full_address)
-        print(f"{customer['city']}{customer['province']}, {customer['postal_code']}")
-        print(f"{customer['instructions']}\n")
+        receipt_lines.append(f"{customer['city']}{customer['province']}, {customer['postal_code']}")
+        receipt_lines.append(f"{customer['instructions']}\n")
     else:
-        print(f"Phone: {customer['phone']}\n")
+        receipt_lines.append(f"Phone: {customer['phone']}\n")
 
-    print(f"{'Order':<25}{'Item Amt':>10}{'Item Price':>15}{'Total':>12}")
-    print(f"{order['meal']:<25}{order['quantity']:>10}{f'${order['price']:.2f}':>15}{f'${costs['item_total']:.2f}':>12}")
+    receipt_lines.append(f"{'Order':<25}{'Item Amt':>10}{'Item Price':>15}{'Total':>12}")
+    receipt_lines.append(f"{order['meal']:<25}{order['quantity']:>10}{f'${order['price']:.2f}':>15}{f'${costs['item_total']:.2f}':>12}")
 
     if student:
-        print(f"{'15% Student saving':>50}{f'-${costs['discount']:.2f}':>12}")
+        receipt_lines.append(f"{'15% Student saving':>50}{f'-${costs['discount']:.2f}':>12}")
 
-    print(f"{'Sub Total':>50}{f'${costs['subtotal']:.2f}':>12}")
+    receipt_lines.append(f"{'Sub Total':>50}{f'${costs['subtotal']:.2f}':>12}")
 
     if customer["delivery"] == 'y':
         if costs["delivery"] == 0:
-            print(f"{'Delivery (Waived)':>50}{f'${costs['delivery']:.2f}':>12}")
+            receipt_lines.append(f"{'Delivery (Waived)':>50}{f'${costs['delivery']:.2f}':>12}")
         else:
-            print(f"{'Delivery':>50}{f'${costs['delivery']:.2f}':>12}")
-        print(f"{f'Tips ({int(tip_percent*100)}%)':>50}{f'${costs['tip']:.2f}':>12}")
+            receipt_lines.append(f"{'Delivery':>50}{f'${costs['delivery']:.2f}':>12}")
+        receipt_lines.append(f"{f'Tips ({int(tip_percent*100)}%)':>50}{f'${costs['tip']:.2f}':>12}")
 
-    print(f"{'Tax(13%)':>50}{f'${costs['tax']:.2f}':>12}")
-    print(f"{'':>50}{'--------':>12}")
-    print(f"{'TOTAL':>50}{f'${costs['total']:.2f}':>12}")
-    print("\nThank you for your order!")
+    receipt_lines.append(f"{'Tax(13%)':>50}{f'${costs['tax']:.2f}':>12}")
+    receipt_lines.append(f"{'':>50}{'--------':>12}")
+    receipt_lines.append(f"{'TOTAL':>50}{f'${costs['total']:.2f}':>12}")
+    receipt_lines.append("\nThank you for your order!")
+
+    #this is to print to screen
+    print('\n'.join(receipt_lines))
+
+    try:
+        #this is to make the filename using customer information
+        
 
 
 
