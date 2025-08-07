@@ -32,7 +32,6 @@ menu = {
 }
 
 #adding my functions
-
 #this is my welcome function
 def show_welcome():
     print("Welcome to Arnold's Amazing Eats!")
@@ -178,6 +177,23 @@ def print_receipt(customer, order, costs, student, tip_percent):
     print(f"{'':>50}{'--------':>12}")
     print(f"{'TOTAL':>50}{f'${costs['total']:.2f}':>12}")
     print("\nThank you for your order!")
+
+#The next couple of functions are for my validations
+
+def validate_not_empty(input_str):
+    return len(input_str.strip()) > 0
+
+def validate_postal_code(code):
+    return len(code.strip()) == 7
+
+def validate_menu_choice(choice):
+    try:
+        return 1<= int(choice) <= 8
+    except ValueError:
+        return False
+    
+
+
 
 
     #this is the main function that 
