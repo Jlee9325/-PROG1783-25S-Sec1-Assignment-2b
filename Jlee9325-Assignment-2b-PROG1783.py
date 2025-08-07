@@ -110,7 +110,7 @@ def take_order():
             more = input("Would you like to order another item? (y/n): ").lower()
             if more != 'y':
                 break
-            
+
         except ValueError:
             print("Please enter valid numbers.")
     return order
@@ -133,7 +133,7 @@ def get_tip_percentage():
     
 #this function is to calculate the totals of the meal
 def calculate_total (order, student, delivery, tip_percent):
-    item_total= order["price"] * order["quantity"]
+    item_total= sum(order["price"] * order["quantity"] for order in order)
     discount = item_total * STUDENT_DISCOUNT_RATE if student else 0
     subtotal = item_total - discount
     delivery_charge = DELIVERY_FEE if (delivery and subtotal < FREE_DELIVERY) else 0
@@ -156,6 +156,9 @@ def calculate_total (order, student, delivery, tip_percent):
 #this next function is for printing the receipt
 
 def print_receipt(customer, order, costs, student, tip_percent):
+
+    receipt_lines = []
+
     print ("\n\n===ARNOLD'S AMAZING EATS===")
     print("           RECEIPT\n")
 
@@ -163,7 +166,7 @@ def print_receipt(customer, order, costs, student, tip_percent):
 
     if customer["delivery"] == 'y':
         full_address = f"{customer['street']}" + (f" Unit{customer['unit']}" if customer ['unit'] else"")
-        print(full_address)
+        receipt_lines.append(full_address)
         print(f"{customer['city']}{customer['province']}, {customer['postal_code']}")
         print(f"{customer['instructions']}\n")
     else:
@@ -188,6 +191,8 @@ def print_receipt(customer, order, costs, student, tip_percent):
     print(f"{'':>50}{'--------':>12}")
     print(f"{'TOTAL':>50}{f'${costs['total']:.2f}':>12}")
     print("\nThank you for your order!")
+
+
 
 #The next couple of functions are for my validations
 
