@@ -17,7 +17,15 @@ DELIVERY_FEE = 7.00
 FREE_DELIVERY = 25.00
 TIP_OPTIONS = {1: 0.10, 2: 0.15, 3: 0.20}
 
-#This is my Menu Dictionary adding 4 more items from 2
+#This is my order menu with classes
+
+class MenuItem:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+        
+
+#This is my Menu Dictionary Using classes
 
 menu = {
     1: {"name": "Garlic Burger", "price": 12.69},
