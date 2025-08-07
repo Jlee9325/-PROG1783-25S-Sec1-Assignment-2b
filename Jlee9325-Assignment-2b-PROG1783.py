@@ -17,23 +17,16 @@ DELIVERY_FEE = 7.00
 FREE_DELIVERY = 25.00
 TIP_OPTIONS = {1: 0.10, 2: 0.15, 3: 0.20}
 
-#This is my order menu with classes
+#This is my Menu Dictionary Using classes
 
-class MenuItem:
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
-
-class Menu:
-    def __init__(self):
-        self.items = { 
-            1: {"name": "Garlic Burger", "price": 12.69},
-            2: {"name": "Cheese Pizza", "price": 15.99},
-            3: {"name": "Snack Wrap", "price": 9.39},
-            4: {"name": "Nacho Fries", "price": 7.99},
-            5: {"name": "Poutine", "price": 9.79},
-            6: {"name": "The Dawg","price": 6.49},
-                }
+menu = {
+    1: {"name": "Garlic Burger", "price": 12.69},
+    2: {"name": "Cheese Pizza", "price": 15.99},
+    3: {"name": "Snack Wrap", "price": 9.39},
+    4: {"name": "Nacho Fries", "price": 7.99},
+    5: {"name": "Poutine", "price": 9.79},
+    6: {"name": "The Dawg","price": 6.49},
+}
 
 #adding my functions
 
