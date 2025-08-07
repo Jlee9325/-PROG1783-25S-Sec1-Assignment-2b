@@ -38,11 +38,15 @@ def show_welcome():
     print("Place your meal for pick up or delivery.\n")
 
 #this function triggers when nothing is inputed
-def get_non_empty_input(prompt):
-    value = input (prompt).strip()
-    while value == "":
-        value = input("This field cannot be empty. " + prompt).strip()
-    return value
+def get_valid_input(prompt, validation_func, error_msg="Invalid input. Please Try Again."):
+    while True:
+        try:
+            user_input = input(prompt).strip()
+            if validation_func(user_input):
+                return user_input
+            print (error_msg)
+        except Exception as e:
+            print(f"Error: {str(e)}")
 
 #this is the postal code function
 def get_postal_code():
@@ -54,18 +58,19 @@ def get_postal_code():
 #this is the function for customer information
 def get_customer_info():
     info = {}
-    info["first_name"] = get_non_empty_input("Enter your first name: ")
-    info["last_name"] = get_non_empty_input("Enter your last name: ")
-    info["phone_number"] = get_non_empty_input("Enter your phone number: ")
+    print("\n=== Customer Information ===")
+    info["first_name"] = get_valid_input("Enter your first name: ", validate_not_empty)
+    info["last_name"] = get_valid_input("Enter your last name: ")
+    info["phone_number"] = get_valid_input("Enter your phone number: ")
     info["delivery"] = input("Do you need delivery? (y/n): ").lower()
     while info["delivery"] not in ['y', 'n']:
         info["delivery"] = input("Please enter 'y' or 'n': ").lower()
 
     if info["delivery"] == 'y':
-        info["street"] = get_non_empty_input("Enter your street address: ")
+        info["street"] = get_valid_input("Enter your street address: ")
         info["unit"] = input("Enter your unit number (optional): ")
-        info["city"] = get_non_empty_input("Enter your city: ")
-        info["province"] = get_non_empty_input("Enter your Province: ")
+        info["city"] = get_valid_input("Enter your city: ")
+        info["province"] = get_valid_input("Enter your Province: ")
         info["postal_code"] = get_postal_code()
         info["instructions"] = input("Any specific delivery instructions? ")
     return info
